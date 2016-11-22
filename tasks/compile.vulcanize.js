@@ -5,6 +5,7 @@
 // -------------------------------------------
 
 const vulcanize = require('gulp-vulcanize');
+const htmlmin = require('gulp-htmlmin');
 
 module.exports = function(gulp) {
   return function () {
@@ -23,6 +24,7 @@ module.exports = function(gulp) {
         inlineCSS: true,
         inlineScripts: true
       }))
+      .pipe(htmlmin({collapseWhitespace: true, removeComments: true, removeEmptyAttributes: true, minifyJS:true, minifyCSS:true}))
       .pipe(gulp.dest('dist/elements/'));
   };
 };
